@@ -1,0 +1,9 @@
+jupyterlab
+pandas
+requests
+numpy
+scipy
+statsmodels
+plotly
+pictorial
+
