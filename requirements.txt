@@ -7,3 +7,5 @@ statsmodels
 plotly
 pictorial
 python-dotenv
+tqdm
+ipywidgets
