@@ -12,10 +12,6 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "Apache Lincence 2"}
 dependencies = [
-    "python-dotenv==0.21.1",
+    "python-dotenv",
 ]
 dynamic = ["version"]
-
-[project.optional-dependencies]
-pdf = ["ReportLab>=1.2", "RXP"]
-rest = ["docutils>=0.3", "pack ==1.1, ==1.3"]

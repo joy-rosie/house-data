@@ -4,6 +4,7 @@ import sys
 from typing import Optional
 
 from .typing import TypePathLike
+from .config import get_path_log
 
 __all__ = [
     'get_logger',
@@ -21,11 +22,16 @@ def get_logger(
     path_log: Optional[TypePathLike],
 ) -> logging.Logger:
 
+    if path_log is None:
+        path_log = get_path_log()
     path_log = Path(path_log)
 
     logger = logging.Logger(key)
 
-    file_handler = logging.FileHandler(path_log.joinpath(f'{key}.log'), mode='w')
+    path_log_file = path_log.joinpath(f'{key}.log')
+    path_log_file.parent.mkdir(parents=True, exist_ok=True)
+
+    file_handler = logging.FileHandler(path_log_file, mode='a')
     file_handler.setLevel(logging.DEBUG)
     file_handler.setFormatter(LOGGING_FORMATTER)
 
