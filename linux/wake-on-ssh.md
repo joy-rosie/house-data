@@ -1,9 +1,6 @@
-Following two links:
-
-1. https://unix.stackexchange.com/questions/421325/wake-on-lan-via-ssh
-1. https://necromuralist.github.io/posts/enabling-wake-on-lan/
-
-
+1. Following instructions from links below:
+    - https://unix.stackexchange.com/questions/421325/wake-on-lan-via-ssh
+    - https://necromuralist.github.io/posts/enabling-wake-on-lan/
 1. Running the following gives me all the network connections:
     ```sh
     ip a
@@ -13,7 +10,7 @@ Following two links:
     ```sh
     sudo ethtool enp2s0 | grep Wake-on
     ```
-1. It is likely to output `Wake-on: d` which means disabled. To enable it to wake on ssh we need to turn it to `u`@
+1. It is likely to output `Wake-on: d` which means disabled. To enable it to wake on ssh we need to turn it to `u`:
     ```sh
     sudo ethtool --change enp2s0 wol u
     ```
