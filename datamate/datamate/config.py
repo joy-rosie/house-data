@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from typing import NoReturn
+from typing import NoReturn, Optional
 
 from dotenv import dotenv_values
 
@@ -36,8 +36,10 @@ def get_path_data() -> Path:
     return Path(config_env['PATH_DATA'])
 
 
-def get_path_log() -> Path:
-    return Path(config_env['PATH_LOG'])
+def get_path_log(path: Optional[TypePathLike] = None) -> Path:
+    if path is None:
+        path = config_env['PATH_LOG']
+    return Path(path)
 
 
 def get_keys() -> dict[str, str]:

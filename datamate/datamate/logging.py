@@ -22,9 +22,7 @@ def get_logger(
     path_log: Optional[TypePathLike],
 ) -> logging.Logger:
 
-    if path_log is None:
-        path_log = get_path_log()
-    path_log = Path(path_log)
+    path_log = get_path_log(path=path_log)
 
     logger = logging.Logger(key)
 
