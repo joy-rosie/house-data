@@ -1,10 +1,10 @@
 import warnings
 
-from . import logging
-from . import typing
+from . import logging  # noqa: F401
+from . import typing  # noqa: F401
 from . import config
 
 try:
-    config.load('.env')
+    config.load(".env")
 except:
-    warnings.warn('Could not load config when importing datamate')
+    warnings.warn("Could not load config when importing datamate")

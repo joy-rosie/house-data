@@ -1,5 +1,4 @@
 import logging
-from pathlib import Path
 import sys
 from typing import Optional
 
@@ -7,13 +6,16 @@ from .typing import TypePathLike
 from .config import get_path_log
 
 __all__ = [
-    'get_logger',
+    "get_logger",
 ]
 
 
 LOGGING_FORMATTER = logging.Formatter(
-    fmt='%(asctime)s.%(msecs)03d %(levelname)s %(module)s - %(funcName)s: %(message)s',
-    datefmt='%Y-%m-%d %H:%M:%S',
+    fmt=(
+        "%(asctime)s.%(msecs)03d %(levelname)s "
+        "%(module)s - %(funcName)s: %(message)s"
+    ),
+    datefmt="%Y-%m-%d %H:%M:%S",
 )
 
 
@@ -26,10 +28,10 @@ def get_logger(
 
     logger = logging.Logger(key)
 
-    path_log_file = path_log.joinpath(f'{key}.log')
+    path_log_file = path_log.joinpath(f"{key}.log")
     path_log_file.parent.mkdir(parents=True, exist_ok=True)
 
-    file_handler = logging.FileHandler(path_log_file, mode='a')
+    file_handler = logging.FileHandler(path_log_file, mode="a")
     file_handler.setLevel(logging.DEBUG)
     file_handler.setFormatter(LOGGING_FORMATTER)
 
