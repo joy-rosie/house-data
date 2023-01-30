@@ -8,3 +8,4 @@ plotly
 pictorial
 tqdm
 ipywidgets
+-e ./datamate
