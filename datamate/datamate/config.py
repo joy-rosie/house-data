@@ -13,7 +13,8 @@ __all__ = [
     "get_path_log",
     "get_path_data",
     "get_all_keys",
-    "get_key",
+    "get_key_for_name",
+    "get_path_data_for_key",
 ]
 
 
@@ -49,8 +50,17 @@ def get_all_keys(path: Optional[TypePathLike] = None) -> dict[str, str]:
     return keys
 
 
-def get_key(
+def get_key_for_name(
     name: str,
     path_keys: Optional[TypePathLike] = None,
 ) -> str:
     return get_all_keys(path=path_keys)[name]
+
+
+def get_path_data_for_key(
+    key: str,
+    path_data: Optional[TypePathLike],
+) -> Path:
+    path = Path(get_path_data(path=path_data)).joinpath(key)
+    path.mkdir(parents=True, exist_ok=True)
+    return path
