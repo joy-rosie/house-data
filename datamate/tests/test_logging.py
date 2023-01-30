@@ -1,8 +1,6 @@
 import pytest
 import datamate
 
-from .conftest import temp_dir
-
 
 @pytest.fixture
 def logger(key, temp_dir):
