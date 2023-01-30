@@ -28,7 +28,7 @@ def get_logger(
 
     logger = logging.Logger(key)
 
-    path_log_file = path_log.joinpath(f"{key}.log")
+    path_log_file = path_log.joinpath(f"{key}/log.log")
     path_log_file.parent.mkdir(parents=True, exist_ok=True)
 
     file_handler = logging.FileHandler(path_log_file, mode="a")
