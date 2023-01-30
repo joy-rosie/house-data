@@ -10,9 +10,9 @@ authors = [
 description = "Python package to help with data analysis"
 readme = "README.md"
 requires-python = ">=3.10"
-license = "Apache-2.0"
 dependencies = [
-    "python-dotenv",
+    "python-dotenv==0.21.1",
+    "pandas==1.5.3",
 ]
 dynamic = ["version"]
 
