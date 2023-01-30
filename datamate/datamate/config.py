@@ -1,8 +1,10 @@
+from functools import lru_cache
 import json
+import os
 from pathlib import Path
-from typing import NoReturn, Optional
+from typing import Optional
 
-from dotenv import dotenv_values
+from dotenv import load_dotenv
 
 from .typing import TypePathLike
 
@@ -16,35 +18,45 @@ __all__ = [
     "get_key",
 ]
 
-config_env = None
-config_keys = None
+
+PATH_LOG = "PATH_LOG"
+PATH_DATA = "PATH_DATA"
+PATH_KEYS = "PATH_KEYS"
 
 
-def load(path_env: TypePathLike) -> NoReturn:
-    path_env = Path(path_env)
-    config_env = dotenv_values(path_env)
-
-    path_keys = config_env["PATH_KEYS"]
-    config_keys = json.load(path_keys)
-
-
-def get() -> dict[str, dict[str, str]]:
-    return dict(env=config_env, keys=config_keys)
+def load(
+    path_env: Optional[TypePathLike] = None,
+    override: Optional[bool] = None,
+) -> bool:
+    return load_dotenv(path_env, override=override)
 
 
-def get_path_data() -> Path:
-    return Path(config_env["PATH_DATA"])
-
-
+@lru_cache(maxsize=10)
 def get_path_log(path: Optional[TypePathLike] = None) -> Path:
     if path is None:
-        path = config_env["PATH_LOG"]
+        path = os.environ["PATH_LOG"]
     return Path(path)
 
 
-def get_keys() -> dict[str, str]:
-    return config_keys
+@lru_cache(maxsize=10)
+def get_path_data(path: Optional[TypePathLike] = None) -> Path:
+    if path is None:
+        path = os.environ["PATH_DATA"]
+    return Path(path)
 
 
-def get_key(name: str) -> str:
-    return config_keys[name]
+@lru_cache(maxsize=10)
+def get_keys(path: Optional[TypePathLike] = None) -> dict[str, str]:
+    if path is None:
+        path = os.environ["PATH_KEYS"]
+    path = Path(path)
+    keys = json.loads(path.read_text())
+    return keys
+
+
+@lru_cache(maxsize=10)
+def get_key(
+    name: str,
+    path_keys: Optional[TypePathLike] = None,
+) -> str:
+    return get_keys(path=path_keys)[name]
