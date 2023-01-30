@@ -122,21 +122,28 @@ def test_get_key_for_name(use_path, name, expected, path_keys):
     assert actual == expected
 
 
+@pytest.fixture
+def path_data(use_path, temp_dir):
+    if not use_path:
+        os.environ[datamate.config.PATH_DATA] = str(temp_dir)
+    yield temp_dir
+
+
 @pytest.mark.parametrize(
-    "key, path_data, expected",
+    "use_path, key",
     [
-        ("key", "test/path", Path("test/path/key")),
-        ("key", None, Path(f"{TEST_PATH_DATA_RAW}/key")),
+        (True, "key"),
+        (False, "key"),
     ],
 )
-def test_get_path_data_for_key(
-    key,
-    path_data,
-    expected,
-    adjust_env_variables,
-):
+def test_get_path_data_for_key(use_path, key, path_data):
+    expected = path_data.joinpath(key)
+    if not use_path:
+        path_data = None
+
     actual = datamate.config.get_path_data_for_key(
         key=key,
         path_data=path_data,
     )
     assert actual == expected
+    assert actual.exists()
