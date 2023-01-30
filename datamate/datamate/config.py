@@ -59,7 +59,7 @@ def get_key_for_name(
 
 def get_path_data_for_key(
     key: str,
-    path_data: Optional[TypePathLike],
+    path_data: Optional[TypePathLike] = None,
 ) -> Path:
     path = Path(get_path_data(path=path_data)).joinpath(key)
     path.mkdir(parents=True, exist_ok=True)
