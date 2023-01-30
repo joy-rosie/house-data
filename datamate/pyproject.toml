@@ -5,12 +5,12 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "datamate"
 authors = [
-    {name = "Josie Tolia"},
+    {name = "Josie"},
 ]
 description = "Python package to help with data analysis"
 readme = "README.md"
 requires-python = ">=3.10"
-license = {text = "Apache Lincence 2"}
+license = "Apache-2.0"
 dependencies = [
     "python-dotenv",
 ]
