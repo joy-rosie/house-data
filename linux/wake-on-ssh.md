@@ -20,3 +20,21 @@
     sudo systemctl suspend && exit
     ```
 1. And you should be able to ssh to wake up the computer
+1. However, all of the above only does a temporary job, therefore we add the following into `/etc/systemd/system/wol.service` using `sudo`:
+    ```
+    [Unit]
+    Description=Enable Wake On Lan
+
+    [Service]
+    Type=oneshot
+    ExecStart = /sbin/ethtool --change enp4s0 wol g
+
+    [Install]
+    WantedBy=basic.target
+    ```
+1. And run the following:
+    ```sh
+    sudo systemctl daemon-reload
+    sudo systemctl enable wol.service
+    ```
+1. Now, it should work after restart
