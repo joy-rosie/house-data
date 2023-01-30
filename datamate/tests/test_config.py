@@ -51,3 +51,29 @@ def test_load_with_override(
     assert os.environ[datamate.config.PATH_LOG] == expected_path_log
     assert os.environ[datamate.config.PATH_DATA] == expected_path_data
     assert os.environ[datamate.config.PATH_KEYS] == expected_path_keys
+
+
+@pytest.mark.parametrize(
+    "path, expected",
+    [
+        (None, Path(TEST_PATH_LOG_RAW)),
+        (Path("test"), Path("test")),
+        ("test", Path("test")),
+    ],
+)
+def test_get_path_log(path, adjust_env_variables, expected):
+    actual = datamate.config.get_path_log(path=path)
+    assert expected == actual
+
+
+@pytest.mark.parametrize(
+    "path, expected",
+    [
+        (None, Path(TEST_PATH_DATA_RAW)),
+        (Path("test"), Path("test")),
+        ("test", Path("test")),
+    ],
+)
+def test_get_path_data(path, adjust_env_variables, expected):
+    actual = datamate.config.get_path_data(path=path)
+    assert expected == actual
