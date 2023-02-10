@@ -1,5 +1,6 @@
 jupyterlab
 pandas
+pyarrow
 requests
 numpy
 scipy

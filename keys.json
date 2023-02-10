@@ -1,4 +1,4 @@
 {
     "price-paid-data/raw": "price-paid-data/raw",
-    "price-paid-data/derived": "price-path-data/derived"
+    "price-paid-data/derived": "price-paid-data/derived"
 }
