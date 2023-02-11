@@ -38,3 +38,7 @@
     sudo systemctl enable wol.service
     ```
 1. Now, it should work after restart
+1. More links:
+  - https://bharath.lohray.com/weblog/suspending-a-computer-over-ssh/
+  - https://askubuntu.com/questions/893056/logout-of-ssh-and-then-suspend-machine
+  - https://askubuntu.com/questions/35719/how-do-i-suspend-over-ssh
