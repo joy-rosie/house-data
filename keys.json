@@ -2,4 +2,8 @@
     "price-paid-data/raw": "price-paid-data/raw"
     ,"price-paid-data/derived": "price-paid-data/derived"
     ,"police-data/raw": "police-data/raw"
+    ,"postcode-data/raw": "postcode-data/raw"
+    ,"postcode-data/derived": "postcode-data/derived"
+    ,"uprn-lookup-data/raw": "uprn-lookup-data/raw"
+    ,"uprn-lookup-data/derived": "uprn-lookup-data/derived"
 }
