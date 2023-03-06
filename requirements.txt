@@ -1,10 +1,9 @@
 jupyterlab
-pandas
-pyarrow
 requests
 numpy
 scipy
 statsmodels
+convertbng
 plotly
 pictorial
 tqdm
