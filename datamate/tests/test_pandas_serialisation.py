@@ -38,6 +38,7 @@ import pandas
             pandas.DataFrame(dict(b=[3, 4], a=pandas.Categorical([1, 2]))),
         ),
         # Automatically appends data
+        # TODO - Need to take into account that order of "b" changes
         (
             [
                 pandas.DataFrame(dict(a=[1], b=[3])),
