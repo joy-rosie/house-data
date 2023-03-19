@@ -11,7 +11,7 @@ import pandas
             dict(),
             pandas.DataFrame(dict(a=[1, 2], b=[3, 4])),
         ),
-        # Parition column automatically gets put to the end of the dataframe
+        # Partition column automatically gets put to the end of the dataframe
         # and turned into a categorical
         (
             [pandas.DataFrame(dict(a=[1, 2], b=[3, 4]))],
